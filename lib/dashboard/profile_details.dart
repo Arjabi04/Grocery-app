@@ -116,7 +116,7 @@ class ProfileCard extends StatelessWidget {
       padding: const EdgeInsets.all(12),
 
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 240, 235, 235),
+        color: Colors.grey[100],
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -171,7 +171,7 @@ class ProfileOptionCard extends StatelessWidget {
           onTap: onTap, // optional tap
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-            color: const Color.fromARGB(255, 240, 235, 235),
+            color: Colors.grey[100],
             child: Row(
               children: [
                 Icon(icon, size: 24, color: Colors.grey[600]),

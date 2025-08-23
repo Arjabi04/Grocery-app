@@ -62,7 +62,7 @@ class ProductDetailPage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey[300],
+                    backgroundColor: Colors.grey[200],
                     padding: const EdgeInsets.symmetric(vertical: 12),
                   ),
                   child: const Text(

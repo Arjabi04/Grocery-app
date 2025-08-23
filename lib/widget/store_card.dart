@@ -22,7 +22,7 @@ class StoreWidget extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 6),
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
-        color: const Color.fromARGB(255, 234, 232, 237),
+        color: Colors.grey[100],
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
       child: Stack(

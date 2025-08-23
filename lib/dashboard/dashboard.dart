@@ -35,7 +35,7 @@ class _DashboardState extends State<Dashboard> {
       bottomNavigationBar: Container(
         height: 84,
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 243, 240, 252),
+          color: Colors.white,
           boxShadow: [
             BoxShadow(
               color: const Color(0x19000000),
@@ -74,7 +74,7 @@ class _DashboardState extends State<Dashboard> {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: isSelected
             ? BoxDecoration(
-                color: const Color.fromARGB(255, 225, 221, 232),
+                color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(10),
               )
             : null,

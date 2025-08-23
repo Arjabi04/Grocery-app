@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/dashboard/checkout_summary.dart';
 import 'package:grocery_app/dashboard/dashboard.dart';
+import 'package:grocery_app/dashboard/payment_method.dart';
 import 'package:grocery_app/dashboard/previous_order_detail.dart';
+import 'package:grocery_app/dashboard/search_page.dart';
 import 'package:grocery_app/dashboard/storepage.dart';
 import 'package:grocery_app/dashboard/product_detail_page.dart';
 import 'package:grocery_app/onboarding/enable_notification.dart';
@@ -27,7 +29,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white, // All scaffolds will be white
+      ),
       // home: SplashScreen(),
       // home: Onboarding1(),
       // home: Onboarding2(),
@@ -42,7 +47,9 @@ class MyApp extends StatelessWidget {
       // home: Storepage(),
       // home: ProductDetailPage(),
       // home: OrderDetail(),
-      home: CheckoutSummary(),
+      // home: CheckoutSummary(),
+      // home: PaymentMethod(),
+      home: SearchPage(),
     );
   }
 }

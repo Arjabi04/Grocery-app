@@ -93,7 +93,7 @@ class OrderDetail extends StatelessWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 240, 235, 235),
+                      color: Colors.grey[100],
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Column(
@@ -174,7 +174,7 @@ class OrderDetail extends StatelessWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 240, 235, 235),
+                      color: Colors.grey[100],
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(

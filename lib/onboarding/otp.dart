@@ -7,7 +7,6 @@ class OtpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -30,10 +29,7 @@ class OtpScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 16, color: Colors.grey),
               ),
 
-              const Text(
-                '+62 888 1234 5678',
-                style: TextStyle(fontSize: 16),
-              ),
+              const Text('+62 888 1234 5678', style: TextStyle(fontSize: 16)),
 
               const SizedBox(height: 30),
 
@@ -86,30 +82,37 @@ class OtpScreen extends StatelessWidget {
 
               const SizedBox(height: 12),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'By clicking, I accept the ',
-                    style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-                  ),
-                  Text(
-                    'Terms and Conditions',
-                    style: TextStyle(
-                        fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    ' & ',
-                    style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-                  ),
-                  Text(
-                    'Privacy Policy',
-                    style: TextStyle(
-                        fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.bold),
-                  ),
-                ],
-              )
-
+              Center(
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  children: [
+                    Text(
+                      'By clicking, I accept the ',
+                      style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                    ),
+                    Text(
+                      'Terms and Conditions',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[600],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      ' & ',
+                      style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                    ),
+                    Text(
+                      'Privacy Policy',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[600],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
