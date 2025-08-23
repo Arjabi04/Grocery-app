@@ -162,3 +162,81 @@ class ProductDetailsWidget extends StatelessWidget {
     );
   }
 }
+
+class ProductRowItem extends StatelessWidget {
+  final String imageUrl;
+  final String name;
+  final String price;
+  final String quantity;
+
+  const ProductRowItem({
+    super.key,
+    required this.imageUrl,
+    required this.name,
+    required this.price,
+    this.quantity = 'x1',
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Product Image
+          Container(
+            width: 90,
+            height: 90,
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image: NetworkImage(imageUrl),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const SizedBox(width: 16),
+
+          // Name & Price Column
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  name,
+                  style: const TextStyle(
+                    color: Color(0xFF0D0D0D),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  price,
+                  style: const TextStyle(
+                    color: Color(0xFF0D0D0D),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // Quantity on the far right
+          Text(
+            quantity,
+            style: const TextStyle(
+              color: Color(0xFF0D0D0D),
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
