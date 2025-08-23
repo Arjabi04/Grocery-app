@@ -31,7 +31,10 @@ class SearchPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SearchBarWidget(hintText: "Search anything"),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: SearchBarWidget(hintText: "Search anything"),
+                  ),
                   const SizedBox(height: 20),
                   IconCategorySelector(
                     categories: [

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/dashboard/address_detail.dart';
+import 'package:grocery_app/dashboard/appearance_page.dart';
 import 'package:grocery_app/dashboard/checkout_summary.dart';
 import 'package:grocery_app/dashboard/dashboard.dart';
+import 'package:grocery_app/dashboard/filter.dart';
 import 'package:grocery_app/dashboard/payment_method.dart';
 import 'package:grocery_app/dashboard/previous_order_detail.dart';
 import 'package:grocery_app/dashboard/search_page.dart';
@@ -49,7 +52,10 @@ class MyApp extends StatelessWidget {
       // home: OrderDetail(),
       // home: CheckoutSummary(),
       // home: PaymentMethod(),
-      home: SearchPage(),
+      // home: SearchPage(),
+      // home: Filter(),
+      // home: AddressDetail(),
+      home: AppearancePage(),
     );
   }
 }
