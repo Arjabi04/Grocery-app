@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/dashboard/current_order.dart';
-import 'package:grocery_app/dashboard/my_cart.dart';
-import 'package:grocery_app/dashboard/previous_order.dart';
+import 'package:grocery_app/dashboard/cart/current_order.dart';
+import 'package:grocery_app/dashboard/cart/my_cart.dart';
+import 'package:grocery_app/dashboard/cart/previous_order.dart';
 import 'package:grocery_app/widget/top_navbar.dart';
 
 class CartScreen extends StatefulWidget {

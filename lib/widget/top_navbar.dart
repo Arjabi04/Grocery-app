@@ -48,7 +48,18 @@ class HeaderWithBack extends StatelessWidget {
           onTap: () {
             Navigator.pop(context);
           },
-          child: const Icon(Icons.arrow_back_ios, size: 24),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.4), // 40% opacity
+              shape: BoxShape.circle,
+            ),
+            padding: const EdgeInsets.all(8), // circle size
+            child: const Icon(
+              Icons.arrow_back_ios,
+              size: 24,
+              color: Colors.black, // arrow color
+            ),
+          ),
         ),
       ],
     );

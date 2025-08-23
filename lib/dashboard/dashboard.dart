@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/dashboard/favorite.dart';
 import 'package:grocery_app/dashboard/home_page.dart';
-import 'package:grocery_app/dashboard/cart.dart';
+import 'package:grocery_app/dashboard/cart/cart.dart';
 import 'package:grocery_app/dashboard/profile_details.dart';
 
 class Dashboard extends StatefulWidget {

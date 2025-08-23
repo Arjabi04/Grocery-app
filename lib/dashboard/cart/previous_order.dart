@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/dashboard/progress_order_widget.dart';
+import 'package:grocery_app/widget/progress_order_widget.dart';
 
 class PreviousOrder extends StatelessWidget {
   const PreviousOrder({super.key});
