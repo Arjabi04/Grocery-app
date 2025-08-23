@@ -15,10 +15,9 @@ class _CategorySelectorState extends State<CategorySelector> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50, // Height for the chips
+      height: 40,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
         itemCount: widget.categories.length,
         separatorBuilder: (context, index) => const SizedBox(width: 10),
         itemBuilder: (context, index) {
@@ -30,7 +29,7 @@ class _CategorySelectorState extends State<CategorySelector> {
               });
             },
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+              padding: const EdgeInsets.symmetric(horizontal: 18),
               decoration: ShapeDecoration(
                 color: isSelected
                     ? const Color(0xFF0D0D0D)
@@ -39,13 +38,15 @@ class _CategorySelectorState extends State<CategorySelector> {
                   borderRadius: BorderRadius.circular(100),
                 ),
               ),
-              child: Text(
-                widget.categories[index],
-                style: TextStyle(
-                  color: isSelected ? Colors.white : const Color(0xFF0D0D0D),
-                  fontSize: 14,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
+              child: Center(
+                child: Text(
+                  widget.categories[index],
+                  style: TextStyle(
+                    color: isSelected ? Colors.white : const Color(0xFF0D0D0D),
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ),
