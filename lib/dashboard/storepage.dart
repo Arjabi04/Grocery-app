@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/widget/category_selector.dart';
+import 'package:grocery_app/widget/product_card_square.dart';
 import 'package:grocery_app/widget/searchbar.dart';
 import 'package:grocery_app/widget/top_navbar.dart';
 
@@ -10,60 +11,102 @@ class Storepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Header image with back button
-            StoreHeaderWidget(
-              imageUrl:
-                  'https://media.timeout.com/images/105460851/750/422/image.jpg',
-            ),
-
-            SizedBox(height: 16),
-
-            // Store info
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  StoreInfoWidget(
-                    storeName: "Nippon Mart",
-                    distance: "4 km • 15 mins",
-                    rating: 4.8,
-                    totalRatings: 435,
-                  ),
-                  SizedBox(height: 10),
-                  SearchBarWidget(hintText: "Search product"),
-
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.0),
-                    child: Divider(
-                      color: Colors.grey[300], // grey 300
-                      thickness: 1, // line thickness
-                      indent: 16, // left indent
-                      endIndent: 16, // right indent
-                    ),
-                  ),
-                  Text(
-                    "Catalog",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-
-                  CategorySelector(
-                    categories: [
-                      'All Product',
-                      'Dairy Product',
-                      'Fruits',
-                      'Vegetables',
-                      'Snacks',
-                    ],
-                  ),
-                ],
+        child: SingleChildScrollView(
+          // vertical scroll
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Header image with back button
+              StoreHeaderWidget(
+                imageUrl:
+                    'https://media.timeout.com/images/105460851/750/422/image.jpg',
               ),
-            ),
-          ],
+              const SizedBox(height: 16),
+
+              // Store info + search + catalog
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    StoreInfoWidget(
+                      storeName: "Nippon Mart",
+                      distance: "4 km • 15 mins",
+                      rating: 4.8,
+                      totalRatings: 435,
+                    ),
+                    const SizedBox(height: 10),
+                    const SearchBarWidget(hintText: "Search product"),
+                    const SizedBox(height: 8),
+                    Divider(
+                      color: Colors.grey[300],
+                      thickness: 1,
+                      indent: 16,
+                      endIndent: 16,
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      "Catalog",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+
+                    // Horizontal scrollable categories
+                    CategorySelector(
+                      categories: [
+                        'All Product',
+                        'Dairy Product',
+                        'Fruits',
+                        'Vegetables',
+                        'Snacks',
+                      ],
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    // Products 3x3
+                    Column(
+                      children: List.generate(3, (rowIndex) {
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 12),
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: const [
+                                ProductWidget(
+                                  name: 'Egg Pasta',
+                                  price: '\$15.99',
+                                  imageUrl:
+                                      'https://www.allrecipes.com/thmb/8eg2mEDhj_-wTppSadAddLSXZCw=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/11991-egg-noodles-Beauty-3x4-22172e14a61644a8962c42871debbf21.jpg',
+                                ),
+                                SizedBox(width: 12),
+                                ProductWidget(
+                                  name: 'Milk',
+                                  price: '\$9.50',
+                                  imageUrl:
+                                      'https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg?resize=1366,1366',
+                                ),
+                                SizedBox(width: 12),
+                                ProductWidget(
+                                  name: 'Cheese',
+                                  price: '\$12.00',
+                                  imageUrl:
+                                      'https://cheesemaking.com/cdn/shop/files/cheddar-cheese-making-recipe.jpg?crop=center&height=1200&v=1743632339&width=1200',
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
