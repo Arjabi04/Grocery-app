@@ -50,14 +50,12 @@ class HeaderWithBack extends StatelessWidget {
           },
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.4), // 40% opacity
+              color: const Color.fromARGB(121, 255, 255, 255),
               shape: BoxShape.circle,
             ),
-            padding: const EdgeInsets.all(8), // circle size
-            child: const Icon(
-              Icons.arrow_back_ios,
-              size: 24,
-              color: Colors.black, // arrow color
+            // padding: const EdgeInsets.all(8),
+            child: Center(
+              child: const Icon(Icons.keyboard_arrow_left, size: 35),
             ),
           ),
         ),

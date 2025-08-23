@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/dashboard/dashboard.dart';
+import 'package:grocery_app/dashboard/previous_order_detail.dart';
 import 'package:grocery_app/dashboard/storepage.dart';
+import 'package:grocery_app/dashboard/product_detail_page.dart';
 import 'package:grocery_app/onboarding/enable_notification.dart';
 import 'package:grocery_app/onboarding/get_started.dart';
 import 'package:grocery_app/dashboard/home_page.dart';
@@ -36,7 +38,9 @@ class MyApp extends StatelessWidget {
       // home: EnableNotification(),
       // home: HomePage(),
       // home: Dashboard(),
-      home: Storepage(),
+      // home: Storepage(),
+      // home: ProductDetailPage(),
+      home: OrderDetail(),
     );
   }
 }
