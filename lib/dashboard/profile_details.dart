@@ -28,23 +28,24 @@ class ProfileDetails extends StatelessWidget {
               const SizedBox(height: 16),
 
               // Profile Card
-              const ProfileCard(
-                name: "John Doe",
-                email: "johndoe@gmail.com",
-                imageUrl:
-                    "https://i.pinimg.com/736x/b7/7e/02/b77e025fce3784c582618935c4a4eeb0.jpg",
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: const ProfileCard(
+                  name: "John Doe",
+                  email: "johndoe@gmail.com",
+                  imageUrl:
+                      "https://i.pinimg.com/736x/b7/7e/02/b77e025fce3784c582618935c4a4eeb0.jpg",
+                ),
               ),
 
               const SizedBox(height: 30),
 
               // Section Title
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text(
-                  "General",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                ),
+              Text(
+                "General",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               ),
+
               const SizedBox(height: 10),
               Column(
                 children: const [
@@ -65,7 +66,27 @@ class ProfileDetails extends StatelessWidget {
                     icon: Icons.lock,
                     title: "Change Password",
                     showDivider: false,
-                  ), // last item no divider
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+
+              // suppport
+              Text(
+                "Support",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+              Column(
+                children: const [
+                  ProfileOptionCard(
+                    icon: Icons.location_on,
+                    title: "Need Help? Let's Chat",
+                  ),
+                  ProfileOptionCard(
+                    icon: Icons.lock,
+                    title: "Privacy Policy",
+                    showDivider: false,
+                  ),
                 ],
               ),
             ],
