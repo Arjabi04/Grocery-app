@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:grocery_app/dashboard/address_detail.dart';
 import 'package:grocery_app/dashboard/appearance_page.dart';
+import 'package:grocery_app/dashboard/cart/cart.dart';
 import 'package:grocery_app/dashboard/checkout_summary.dart';
 import 'package:grocery_app/dashboard/dashboard.dart';
 import 'package:grocery_app/dashboard/filter.dart';
@@ -25,7 +28,10 @@ import 'package:grocery_app/onboarding/onbording_4.dart';
 import 'package:grocery_app/onboarding/get_started.dart';
 import 'package:grocery_app/onboarding/set_location.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox('Flutter'); // box for storing profile info
   runApp(const MyApp());
 }
 
@@ -35,9 +41,36 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white, // All scaffolds will be white
-      ),
+      theme: ThemeData(scaffoldBackgroundColor: Colors.white),
+      initialRoute: '/splash',
+
+      // 🔹 Define all routes here
+      routes: {
+        '/splash': (context) => const SplashScreen(),
+        '/onboarding1': (context) => const Onboarding1(),
+        '/onboarding2': (context) => const Onboarding2(),
+        '/onboarding3': (context) => const Onboarding3(),
+        '/onboarding4': (context) => const Onboarding4(),
+        '/getStarted': (context) => const GetStartedScreen(),
+        '/otp': (context) => const OtpScreen(),
+        '/selectCategory': (context) => const SelectCategory(),
+        '/setLocation': (context) => const SetLocation(),
+        '/enableNotification': (context) => const EnableNotification(),
+        '/home': (context) => const Dashboard(initialIndex: 0),
+        '/myCart': (context) => const Dashboard(initialIndex: 1),
+        '/profileDetail': (context) => const Dashboard(initialIndex: 3),
+        '/storePage': (context) => const Storepage(),
+        '/productDetail': (context) => const ProductDetailPage(),
+        '/orderDetail': (context) => const OrderDetail(),
+        '/checkout': (context) => const CheckoutSummary(),
+        '/paymentMethod': (context) => const PaymentMethod(),
+        '/search': (context) => const SearchPage(),
+        '/filter': (context) => const Filter(),
+        '/addressDetail': (context) => const AddressDetail(),
+        '/appearance': (context) => const AppearancePage(),
+        '/orderSuccess': (context) => const OrderSuccessPage(),
+        '/trackOrder': (context) => const Trackorder1(),
+      },
       // home: SplashScreen(),
       // home: Onboarding1(),
       // home: Onboarding2(),
@@ -53,7 +86,7 @@ class MyApp extends StatelessWidget {
       // home: Storepage(),
       // home: ProductDetailPage(),
       // home: OrderDetail(),
-      home: CheckoutSummary(),
+      // home: CheckoutSummary(),
       // home: PaymentMethod(),
       // home: SearchPage(),
       // home: Filter(),

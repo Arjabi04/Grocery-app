@@ -106,7 +106,7 @@ class OtpScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         textColor: Colors.white,
         onPressed: () {
-          // Handle OTP submission
+          Navigator.pushReplacementNamed(context, '/selectCategory');
         },
       ),
     );

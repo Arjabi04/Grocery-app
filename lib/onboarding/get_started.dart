@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/widget/button.dart'; 
+import 'package:grocery_app/widget/button.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});
@@ -90,7 +90,10 @@ class GetStartedScreen extends StatelessWidget {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Phone Number',
-                          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 14,
+                          ),
                         ),
                         style: TextStyle(fontSize: 16),
                       ),
@@ -105,13 +108,12 @@ class GetStartedScreen extends StatelessWidget {
         ),
       ),
 
-
       bottomNavigationBar: BottomButton(
         text: 'Continue',
         backgroundColor: Colors.black,
         textColor: Colors.white,
         onPressed: () {
-          // TODO: Handle continue action
+          Navigator.pushReplacementNamed(context, '/otp');
         },
       ),
     );

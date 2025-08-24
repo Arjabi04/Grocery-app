@@ -18,11 +18,17 @@ class Onboarding4 extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Row(
                 children: [
-                  Expanded(child: Container(height: 4, color: Colors.grey[300])),
+                  Expanded(
+                    child: Container(height: 4, color: Colors.grey[300]),
+                  ),
                   const SizedBox(width: 4),
-                  Expanded(child: Container(height: 4, color: Colors.grey[300])),
+                  Expanded(
+                    child: Container(height: 4, color: Colors.grey[300]),
+                  ),
                   const SizedBox(width: 4),
-                  Expanded(child: Container(height: 4, color: Colors.grey[300])),
+                  Expanded(
+                    child: Container(height: 4, color: Colors.grey[300]),
+                  ),
                   const SizedBox(width: 4),
                   Expanded(child: Container(height: 4, color: Colors.black)),
                 ],
@@ -33,10 +39,7 @@ class Onboarding4 extends StatelessWidget {
 
             // Image
             Center(
-              child: Image.asset(
-                'assets/images/CashRegister.png',
-                width: 210,
-              ),
+              child: Image.asset('assets/images/CashRegister.png', width: 210),
             ),
 
             const SizedBox(height: 26),
@@ -75,7 +78,7 @@ class Onboarding4 extends StatelessWidget {
         backgroundColor: Colors.black,
         textColor: Colors.white,
         onPressed: () {
-          // TODO: Handle button press
+          Navigator.pushReplacementNamed(context, '/getStarted');
         },
       ),
     );

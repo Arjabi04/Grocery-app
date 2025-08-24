@@ -59,8 +59,9 @@ class _CategorySelectorState extends State<CategorySelector> {
 class IconCategoryItem {
   final String label;
   final IconData? icon;
+  final VoidCallback? onTap;
 
-  IconCategoryItem({required this.label, this.icon});
+  IconCategoryItem({required this.label, this.icon, this.onTap});
 }
 
 class IconCategorySelector extends StatefulWidget {
@@ -92,6 +93,9 @@ class _IconCategorySelectorState extends State<IconCategorySelector> {
               setState(() {
                 selectedIndex = index;
               });
+              if (category.onTap != null) {
+                category.onTap!();
+              }
             },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12),

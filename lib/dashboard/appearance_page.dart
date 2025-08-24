@@ -71,7 +71,7 @@ class AppearancePage extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Save button action
+                    Navigator.pushReplacementNamed(context, '/profileDetail');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,

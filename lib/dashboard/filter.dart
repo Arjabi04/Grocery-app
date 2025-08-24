@@ -143,9 +143,14 @@ class _FilterState extends State<Filter> {
                 borderRadius: BorderRadius.circular(50),
               ),
             ),
-            child: const Text(
-              'Apply Filter',
-              style: TextStyle(fontSize: 16, color: Colors.white),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pushReplacementNamed(context, '/search');
+              },
+              child: const Text(
+                'Apply Filter',
+                style: TextStyle(fontSize: 16, color: Colors.white),
+              ),
             ),
           ),
         ),

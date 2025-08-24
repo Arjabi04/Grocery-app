@@ -8,6 +8,7 @@ class ProgressOrder extends StatelessWidget {
   final String totalPrice;
   final int itemCount;
   final String status;
+  final String trackText;
 
   const ProgressOrder({
     super.key,
@@ -18,6 +19,7 @@ class ProgressOrder extends StatelessWidget {
     required this.totalPrice,
     required this.itemCount,
     this.status = 'On Progress',
+    this.trackText = 'Track Order',
   });
 
   @override
@@ -28,16 +30,16 @@ class ProgressOrder extends StatelessWidget {
 
     switch (status.toLowerCase()) {
       case 'delivered':
-        bgColor = const Color(0x1A28A745); // light green background
-        textColor = const Color(0xFF28A745); // green text
+        bgColor = const Color(0x1A28A745);
+        textColor = const Color(0xFF28A745);
         break;
       case 'canceled':
-        bgColor = const Color(0x1AFF0000); // light red background
-        textColor = const Color(0xFFFF0000); // red text
+        bgColor = const Color(0x1AFF0000);
+        textColor = const Color(0xFFFF0000);
         break;
       default:
-        bgColor = const Color(0x19EAB600); // light yellow
-        textColor = const Color(0xFFE9B600); // yellow text
+        bgColor = const Color(0x19EAB600);
+        textColor = const Color(0xFFE9B600);
     }
 
     return Container(
@@ -145,17 +147,17 @@ class ProgressOrder extends StatelessWidget {
             right: 0,
             bottom: 0,
             child: Row(
-              children: const [
+              children: [
                 Text(
-                  'Track Order',
-                  style: TextStyle(
+                  trackText,
+                  style: const TextStyle(
                     color: Color(0xFF777777),
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-                SizedBox(width: 4),
-                Icon(
+                const SizedBox(width: 4),
+                const Icon(
                   Icons.arrow_forward_ios,
                   size: 14,
                   color: Color(0xFF777777),

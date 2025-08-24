@@ -8,16 +8,22 @@ class PreviousOrder extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.all(16),
-      children: const [
-        ProgressOrder(
-          imageUrl:
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlI1j7V70C_7ygnBN2coYFTPHDkSeP5N4P1Q&s',
-          storeName: 'Nippon Mart',
-          orderId: '#2019482',
-          dateTime: '30/06/2024, 4:15 PM',
-          totalPrice: '35.99',
-          itemCount: 2,
-          status: 'Delivered',
+      children: [
+        GestureDetector(
+          onTap: () {
+            Navigator.pushReplacementNamed(context, '/orderDetail');
+          },
+          child: ProgressOrder(
+            imageUrl:
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlI1j7V70C_7ygnBN2coYFTPHDkSeP5N4P1Q&s',
+            storeName: 'Nippon Mart',
+            orderId: '#2019482',
+            dateTime: '30/06/2024, 4:15 PM',
+            totalPrice: '35.99',
+            itemCount: 2,
+            status: 'Delivered',
+            trackText: 'View Detail',
+          ),
         ),
         SizedBox(height: 20),
         ProgressOrder(
@@ -29,6 +35,7 @@ class PreviousOrder extends StatelessWidget {
           totalPrice: '25.50',
           itemCount: 3,
           status: 'Canceled',
+          trackText: 'View Details',
         ),
       ],
     );

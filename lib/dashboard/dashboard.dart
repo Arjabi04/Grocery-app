@@ -5,14 +5,16 @@ import 'package:grocery_app/dashboard/cart/cart.dart';
 import 'package:grocery_app/dashboard/profile_details.dart';
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+  final int initialIndex; // Add this
+
+  const Dashboard({super.key, this.initialIndex = 0}); // default to Home
 
   @override
   State<Dashboard> createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> {
-  int _selectedIndex = 0;
+  late int _selectedIndex;
 
   // Placeholder pages for each tab
   final List<Widget> _pages = [
@@ -21,6 +23,12 @@ class _DashboardState extends State<Dashboard> {
     const FavoriteScreen(),
     const ProfileDetails(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.initialIndex; // Initialize with passed index
+  }
 
   void _onItemTapped(int index) {
     setState(() {

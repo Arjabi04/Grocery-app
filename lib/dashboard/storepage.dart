@@ -36,7 +36,10 @@ class Storepage extends StatelessWidget {
                       totalRatings: 435,
                     ),
                     const SizedBox(height: 10),
-                    const SearchBarWidget(hintText: "Search product"),
+                    GestureDetector(
+                      onTap: () => Navigator.pushNamed(context, '/search'),
+                      child: const SearchBarWidget(hintText: "Search product"),
+                    ),
                     const SizedBox(height: 8),
                     Divider(
                       color: Colors.grey[300],
@@ -75,12 +78,18 @@ class Storepage extends StatelessWidget {
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
-                              children: const [
-                                ProductWidget(
-                                  name: 'Egg Pasta',
-                                  price: '\$15.99',
-                                  imageUrl:
-                                      'https://www.allrecipes.com/thmb/8eg2mEDhj_-wTppSadAddLSXZCw=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/11991-egg-noodles-Beauty-3x4-22172e14a61644a8962c42871debbf21.jpg',
+                              children: [
+                                GestureDetector(
+                                  onTap: () => Navigator.pushNamed(
+                                    context,
+                                    '/productDetail',
+                                  ),
+                                  child: ProductWidget(
+                                    name: 'Fresh Wagyu Beef',
+                                    price: '\$20.99',
+                                    imageUrl:
+                                        'https://cdn.shopify.com/s/files/1/1785/5627/t/60/assets/what_is_wagyu_beef-1684718175209_1000x.jpg?v=1684718176',
+                                  ),
                                 ),
                                 SizedBox(width: 12),
                                 ProductWidget(

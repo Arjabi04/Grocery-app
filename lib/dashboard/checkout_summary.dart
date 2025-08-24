@@ -286,9 +286,15 @@ class CheckoutSummary extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const IconTextArrowWidget(
-                        title: "View Payment Method",
-                        icon: Icons.credit_card,
+                      const SizedBox(height: 10),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/paymentMethod');
+                        },
+                        child: const IconTextArrowWidget(
+                          title: "View Payment Method",
+                          icon: Icons.credit_card,
+                        ),
                       ),
                       const SizedBox(height: 20),
                       BottomButton(
@@ -296,7 +302,7 @@ class CheckoutSummary extends StatelessWidget {
                         backgroundColor: Colors.black,
                         textColor: Colors.white,
                         onPressed: () {
-                          // Handle button press
+                          Navigator.pushNamed(context, '/orderSuccess');
                         },
                       ),
                     ],

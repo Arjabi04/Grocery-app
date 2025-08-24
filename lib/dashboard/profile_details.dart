@@ -1,139 +1,182 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/widget/top_navbar.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-class ProfileDetails extends StatelessWidget {
+class ProfileDetails extends StatefulWidget {
   const ProfileDetails({super.key});
+
+  @override
+  State<ProfileDetails> createState() => _ProfileDetailsState();
+}
+
+class _ProfileDetailsState extends State<ProfileDetails> {
+  final Box profileBox = Hive.box('Flutter');
+
+  String get name => profileBox.get('name', defaultValue: 'John Doe');
+  String get email =>
+      profileBox.get('email', defaultValue: 'johndoe@gmail.com');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16),
-          child: SingleChildScrollView(
-            // 👈 Wrap with scroll view
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Header
-                Row(
-                  children: const [
-                    HeaderWithBack(),
-                    SizedBox(width: 12),
-                    Text(
-                      "Profile Details",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Profile Card
+              ProfileCard(
+                name: name,
+                email: email,
+                imageUrl:
+                    'https://i.pinimg.com/736x/b7/7e/02/b77e025fce3784c582618935c4a4eeb0.jpg',
+                onEdit: _editProfile,
+              ),
 
-                const SizedBox(height: 16),
+              const SizedBox(height: 30),
 
-                // Profile Card
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: const ProfileCard(
-                    name: "John Doe",
-                    email: "johndoe@gmail.com",
-                    imageUrl:
-                        "https://i.pinimg.com/736x/b7/7e/02/b77e025fce3784c582618935c4a4eeb0.jpg",
-                  ),
-                ),
-
-                const SizedBox(height: 30),
-
-                // Section Title
-                const Text(
-                  "General",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                ),
-
-                const SizedBox(height: 10),
-                Column(
-                  children: const [
-                    ProfileOptionCard(
+              // General Section
+              const Text(
+                "General",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(height: 10),
+              Column(
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.pushNamed(context, '/addressDetail'),
+                    child: const ProfileOptionCard(
                       icon: Icons.location_on,
                       title: "Address Details",
                     ),
-                    ProfileOptionCard(
-                      icon: Icons.local_shipping,
-                      title: "Pickup Option",
-                    ),
-                    ProfileOptionCard(
-                      icon: Icons.receipt_long,
-                      title: "My Orders",
-                    ),
-                    ProfileOptionCard(
+                  ),
+                  const ProfileOptionCard(
+                    icon: Icons.local_shipping,
+                    title: "Pickup Option",
+                  ),
+                  const ProfileOptionCard(
+                    icon: Icons.receipt_long,
+                    title: "My Orders",
+                  ),
+                  GestureDetector(
+                    onTap: () => Navigator.pushNamed(context, '/appearance'),
+                    child: const ProfileOptionCard(
                       icon: Icons.contrast,
                       title: "Appearance",
                     ),
-                    ProfileOptionCard(
-                      icon: Icons.lock,
-                      title: "Change Password",
-                      showDivider: false,
-                    ),
-                  ],
-                ),
+                  ),
+                  const ProfileOptionCard(
+                    icon: Icons.lock,
+                    title: "Change Password",
+                    showDivider: false,
+                  ),
+                ],
+              ),
 
-                const SizedBox(height: 30),
+              const SizedBox(height: 30),
 
-                // Support
-                const Text(
-                  "Support",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                ),
-                Column(
-                  children: const [
-                    ProfileOptionCard(
-                      icon: Icons.chat,
-                      title: "Need Help? Let's Chat",
-                    ),
-                    ProfileOptionCard(
-                      icon: Icons.privacy_tip,
-                      title: "Privacy Policy",
-                    ),
-                    ProfileOptionCard(
-                      icon: Icons.book_rounded,
-                      title: "Terms of Service",
-                      showDivider: false,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 30),
-                Column(
-  children: const [
-    ProfileOptionCard(
-      icon: Icons.location_on,
-      title: "Log Out",
-      textColor: Colors.red, 
-      showDivider: false,
-    ),
-  ],
-),
+              // Support Section
+              const Text(
+                "Support",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+              Column(
+                children: const [
+                  ProfileOptionCard(
+                    icon: Icons.chat,
+                    title: "Need Help? Let's Chat",
+                  ),
+                  ProfileOptionCard(
+                    icon: Icons.privacy_tip,
+                    title: "Privacy Policy",
+                  ),
+                  ProfileOptionCard(
+                    icon: Icons.book_rounded,
+                    title: "Terms of Service",
+                    showDivider: false,
+                  ),
+                ],
+              ),
 
-              ],
-            ),
+              const SizedBox(height: 30),
+
+              // Logout
+              GestureDetector(
+                onTap: () {
+                  // Add your logout logic here
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(const SnackBar(content: Text("Logged Out")));
+                },
+                child: const ProfileOptionCard(
+                  icon: Icons.logout,
+                  title: "Log Out",
+                  textColor: Colors.red,
+                  showDivider: false,
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
+
+  Future<void> _editProfile() async {
+    final nameController = TextEditingController(text: name);
+    final emailController = TextEditingController(text: email);
+
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Edit Profile"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: nameController,
+                decoration: const InputDecoration(labelText: "Name"),
+              ),
+              TextField(
+                controller: emailController,
+                decoration: const InputDecoration(labelText: "Email"),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Cancel"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                profileBox.put('name', nameController.text);
+                profileBox.put('email', emailController.text);
+                setState(() {}); // refresh UI
+                Navigator.pop(context);
+              },
+              child: const Text("Save"),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
 
-// Profile Card Widget
 class ProfileCard extends StatelessWidget {
   final String name;
   final String email;
   final String imageUrl;
+  final VoidCallback onEdit;
 
   const ProfileCard({
     super.key,
     required this.name,
     required this.email,
     required this.imageUrl,
+    required this.onEdit,
   });
 
   @override
@@ -167,12 +210,16 @@ class ProfileCard extends StatelessWidget {
               ],
             ),
           ),
-          const Icon(Icons.edit, size: 24, color: Colors.grey),
+          GestureDetector(
+            onTap: onEdit,
+            child: const Icon(Icons.edit, size: 24, color: Colors.grey),
+          ),
         ],
       ),
     );
   }
 }
+
 class ProfileOptionCard extends StatelessWidget {
   final IconData icon;
   final String title;
@@ -208,7 +255,7 @@ class ProfileOptionCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color: textColor ?? const Color(0xFF0D0D0D), 
+                      color: textColor ?? const Color(0xFF0D0D0D),
                     ),
                   ),
                 ),

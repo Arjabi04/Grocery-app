@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:grocery_app/widget/product_card.dart';
-import 'package:grocery_app/widget/button.dart'; 
+import 'package:grocery_app/widget/button.dart';
 
 class CartItemWidget extends StatefulWidget {
   final String storeName;
@@ -41,10 +41,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                 children: [
                   const Text(
                     "• Cart 1",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                   Checkbox(
                     value: isChecked,
@@ -72,7 +69,9 @@ class _CartItemWidgetState extends State<CartItemWidget> {
               Text(
                 widget.storeName,
                 style: const TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.w300),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w300,
+                ),
               ),
               const SizedBox(height: 18),
               const Text(
@@ -89,7 +88,8 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                     price: product['price']!,
                     initialQuantity:
                         int.tryParse(product['quantity'] ?? '') ?? 1,
-                    imageUrl: product['image'] ??
+                    imageUrl:
+                        product['image'] ??
                         'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg',
                   ),
                 );
@@ -106,11 +106,9 @@ class _CartItemWidgetState extends State<CartItemWidget> {
           height: 50,
           child: ElevatedButton(
             onPressed: () {
-              print("Checkout pressed!");
+              Navigator.pushReplacementNamed(context, '/checkout');
             },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.black,
-            ),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
             child: const Text(
               'Checkout',
               style: TextStyle(fontSize: 16, color: Colors.white),

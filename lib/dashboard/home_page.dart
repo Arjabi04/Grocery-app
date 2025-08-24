@@ -43,14 +43,18 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
 
-              SearchBarWidget(hintText: 'Search anything'),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/search',
+                  ); // <-- use your named route
+                },
+                child: SearchBarWidget(hintText: 'Search anything'),
+              ),
 
               const SizedBox(height: 20),
-              // PromoBanner(
-              //   title: 'Summer Sales',
-              //   subtitle: 'Discount up to 60%',
-              //   buttonText: 'Explore now',
-              // ),
+
               const PromoCarousel(),
               const SizedBox(height: 20),
               Row(
@@ -165,14 +169,20 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Column(
-                children: const [
-                  StoreWidget(
-                    storeName: "Nippon Mart",
-                    distanceTime: "4 km  •  15 mins",
-                    rating: "⭐ 4.8",
-                    imageUrl:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlI1j7V70C_7ygnBN2coYFTPHDkSeP5N4P1Q&s",
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/storePage');
+                    },
+                    child: StoreWidget(
+                      storeName: "Nippon Mart",
+                      distanceTime: "4 km  •  15 mins",
+                      rating: "⭐ 4.8",
+                      imageUrl:
+                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlI1j7V70C_7ygnBN2coYFTPHDkSeP5N4P1Q&s",
+                    ),
                   ),
+
                   StoreWidget(
                     storeName: "Fresh Mart",
                     distanceTime: "2 km  •  5 mins",

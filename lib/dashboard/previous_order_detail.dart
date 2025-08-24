@@ -209,7 +209,7 @@ class OrderDetail extends StatelessWidget {
                 backgroundColor: Colors.black,
                 textColor: Colors.white,
                 onPressed: () {
-                  // TODO: Reorder button action
+                  Navigator.pushReplacementNamed(context, '/home');
                 },
               ),
             ),

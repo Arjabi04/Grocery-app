@@ -17,9 +17,7 @@ class Onboarding1 extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Row(
                 children: [
-                  Expanded(
-                    child: Container(height: 4, color: Colors.black),
-                  ),
+                  Expanded(child: Container(height: 4, color: Colors.black)),
                   const SizedBox(width: 4),
                   Expanded(
                     child: Container(height: 4, color: Colors.grey[300]),
@@ -51,10 +49,7 @@ class Onboarding1 extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: Text(
                 'Welcome to Grocerya',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -66,10 +61,7 @@ class Onboarding1 extends StatelessWidget {
               child: Text(
                 'Get your grocery needs at your service within a minute. '
                 'Fast, efficient, and convenient.',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
+                style: TextStyle(fontSize: 16, color: Colors.grey),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -83,11 +75,11 @@ class Onboarding1 extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      // TODO: Handle skip
+                      Navigator.pushReplacementNamed(context, '/getStarted');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.grey[200],
-                       minimumSize: const Size(170, 48),
+                      minimumSize: const Size(170, 48),
                     ),
                     child: const Text(
                       'Skip',
@@ -96,16 +88,15 @@ class Onboarding1 extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      // TODO: Handle next
+                      Navigator.pushReplacementNamed(context, '/onboarding2');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
-                       minimumSize: const Size(170, 48),
+                      minimumSize: const Size(170, 48),
                     ),
                     child: const Text(
                       'Next',
                       style: TextStyle(fontSize: 16, color: Colors.white),
-                      
                     ),
                   ),
                 ],

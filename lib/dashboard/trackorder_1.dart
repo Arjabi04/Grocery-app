@@ -333,10 +333,24 @@ class CompletionRateButtonWidget extends StatelessWidget {
             color: Colors.grey[200],
             borderRadius: BorderRadius.circular(50),
           ),
-          child: const Center(
-            child: Text(
-              'Close',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          child: GestureDetector(
+            onTap: () {
+              // Show SnackBar
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Your order is on the way! \n #1213452'),
+                  duration: Duration(seconds: 5),
+                ),
+              );
+
+              // Navigate to home
+              Navigator.pushNamed(context, '/home');
+            },
+            child: const Center(
+              child: Text(
+                'Close',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
             ),
           ),
         ),

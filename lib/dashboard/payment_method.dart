@@ -12,7 +12,7 @@ class PaymentMethod extends StatefulWidget {
 class _PaymentMethodState extends State<PaymentMethod> {
   // Separate selected indices for credit and debit
   int selectedCreditIndex = 0;
-  int selectedDebitIndex = -1; // none selected initially
+  int selectedDebitIndex = -1;
 
   final List<Map<String, String>> creditCards = [
     {
@@ -110,7 +110,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Save button action
+                    Navigator.pushReplacementNamed(context, '/checkout');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,

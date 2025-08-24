@@ -30,12 +30,17 @@ class FavoriteScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                children: const [
-                  StoreWidget(
-                    storeName: "Nippon Mart",
-                    distanceTime: "4 km  •  15 mins",
-                    imageUrl:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlI1j7V70C_7ygnBN2coYFTPHDkSeP5N4P1Q&s",
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacementNamed(context, '/storePage');
+                    },
+                    child: StoreWidget(
+                      storeName: "Nippon Mart",
+                      distanceTime: "4 km  •  15 mins",
+                      imageUrl:
+                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlI1j7V70C_7ygnBN2coYFTPHDkSeP5N4P1Q&s",
+                    ),
                   ),
                   SizedBox(height: 12),
                   StoreWidget(

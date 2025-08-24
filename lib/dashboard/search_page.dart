@@ -41,6 +41,7 @@ class SearchPage extends StatelessWidget {
                       IconCategoryItem(
                         label: "Filter",
                         icon: Icons.filter_list,
+                        onTap: () => Navigator.pushNamed(context, '/filter'),
                       ),
                       IconCategoryItem(label: "Fruits"),
                       IconCategoryItem(label: "Vegetables"),
