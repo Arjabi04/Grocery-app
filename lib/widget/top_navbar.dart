@@ -8,24 +8,37 @@ class HeaderWithBackAndHelp extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        // Back button (circle)
         GestureDetector(
           onTap: () {
             Navigator.pop(context);
           },
-          child: const Icon(Icons.arrow_back_ios, size: 28),
+          child: Container(
+            width: 40,
+            height: 40,
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(240, 255, 255, 255),
+              shape: BoxShape.circle,
+            ),
+            child: const Center(
+              child: Icon(Icons.keyboard_arrow_left, size: 28),
+            ),
+          ),
         ),
+
+        // Help button (circle with "?")
         Container(
-          width: 36,
-          height: 36,
-          decoration: BoxDecoration(
-            color: Colors.grey[100],
+          width: 40,
+          height: 40,
+          decoration: const BoxDecoration(
+            color: Color.fromARGB(255, 255, 255, 255),
             shape: BoxShape.circle,
           ),
           child: const Center(
             child: Text(
               '?',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 22,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),

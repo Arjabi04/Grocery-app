@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/widget/button.dart';
 import 'package:grocery_app/widget/product_card.dart';
 import 'package:grocery_app/widget/top_navbar.dart';
 
@@ -53,7 +54,7 @@ class CheckoutSummary extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      const AddressCard(
+                      const IconTextArrowWidget(
                         title: "Home",
                         address: "Kemayoran, Cendana Street 1, Adinata",
                       ),
@@ -277,7 +278,27 @@ class CheckoutSummary extends StatelessWidget {
                         ),
                       ),
 
+                      const SizedBox(height: 30),
+                      const Text(
+                        "Payment Method",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const IconTextArrowWidget(
+                        title: "View Payment Method",
+                        icon: Icons.credit_card,
+                      ),
                       const SizedBox(height: 20),
+                      BottomButton(
+                        text: "Confirm Your Order",
+                        backgroundColor: Colors.black,
+                        textColor: Colors.white,
+                        onPressed: () {
+                          // Handle button press
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -290,11 +311,17 @@ class CheckoutSummary extends StatelessWidget {
   }
 }
 
-class AddressCard extends StatelessWidget {
+class IconTextArrowWidget extends StatelessWidget {
   final String title;
-  final String address;
+  final String? address;
+  final IconData icon;
 
-  const AddressCard({super.key, required this.title, required this.address});
+  const IconTextArrowWidget({
+    super.key,
+    required this.title,
+    this.address,
+    this.icon = Icons.location_on,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -308,7 +335,7 @@ class AddressCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Icon(Icons.location_on, size: 24, color: Colors.grey),
+          Icon(icon, size: 24, color: Colors.grey[700]),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -322,16 +349,18 @@ class AddressCard extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  address,
-                  style: const TextStyle(
-                    color: Color(0xFF777777),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    height: 1.4,
+                if (address != null) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    address!,
+                    style: const TextStyle(
+                      color: Color(0xFF777777),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      height: 1.4,
+                    ),
                   ),
-                ),
+                ],
               ],
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/widget/button.dart'; 
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});
@@ -13,7 +14,7 @@ class GetStartedScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Row with spacer and ? bubble on the top-right
+              // Top row with ? bubble
               Row(
                 children: [
                   const Spacer(),
@@ -85,42 +86,33 @@ class GetStartedScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: TextField(
-                        decoration: const InputDecoration(
+                      child: const TextField(
+                        decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Phone Number',
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+                          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
                         ),
-                        style: const TextStyle(fontSize: 16),
+                        style: TextStyle(fontSize: 16),
                       ),
                     ),
                   ),
-
-
                 ],
               ),
 
-              const SizedBox(height: 40),
-
               const Spacer(),
-
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // TODO: Add button action
-                  },
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                  child: const Text(
-                    'Continue',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
-                ),
-              ),
             ],
           ),
         ),
+      ),
+
+
+      bottomNavigationBar: BottomButton(
+        text: 'Continue',
+        backgroundColor: Colors.black,
+        textColor: Colors.white,
+        onPressed: () {
+          // TODO: Handle continue action
+        },
       ),
     );
   }

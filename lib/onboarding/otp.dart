@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/widget/top_navbar.dart';
+import 'package:grocery_app/widget/button.dart'; // Import BottomButton
 
 class OtpScreen extends StatelessWidget {
   const OtpScreen({super.key});
@@ -61,25 +62,6 @@ class OtpScreen extends StatelessWidget {
                 }),
               ),
 
-              const Spacer(),
-
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Handle OTP submission
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                  ),
-                  child: const Text(
-                    'Continue',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
-                ),
-              ),
-
               const SizedBox(height: 12),
 
               Center(
@@ -116,6 +98,16 @@ class OtpScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+
+      // BottomButton pinned at the bottom
+      bottomNavigationBar: BottomButton(
+        text: 'Continue',
+        backgroundColor: Colors.black,
+        textColor: Colors.white,
+        onPressed: () {
+          // Handle OTP submission
+        },
       ),
     );
   }

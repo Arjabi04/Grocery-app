@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/widget/top_navbar.dart';
+import 'package:grocery_app/widget/button.dart'; // Import BottomButton
 
 class SelectCategory extends StatefulWidget {
   const SelectCategory({super.key});
@@ -9,7 +10,6 @@ class SelectCategory extends StatefulWidget {
 }
 
 class _SelectCategoryState extends State<SelectCategory> {
-  // Track selected categories
   final List<String> categories = [
     'Gluten-Free',
     'Vegan Friendly',
@@ -114,26 +114,19 @@ class _SelectCategoryState extends State<SelectCategory> {
               ),
 
               const Spacer(),
-
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // TODO: Continue button action
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                  ),
-                  child: const Text(
-                    'Continue',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
-                ),
-              ),
             ],
           ),
         ),
+      ),
+
+      // BottomButton pinned at the bottom
+      bottomNavigationBar: BottomButton(
+        text: 'Continue',
+        backgroundColor: Colors.black,
+        textColor: Colors.white,
+        onPressed: () {
+          // TODO: Continue button action
+        },
       ),
     );
   }

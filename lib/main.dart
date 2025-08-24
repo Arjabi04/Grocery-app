@@ -4,11 +4,13 @@ import 'package:grocery_app/dashboard/appearance_page.dart';
 import 'package:grocery_app/dashboard/checkout_summary.dart';
 import 'package:grocery_app/dashboard/dashboard.dart';
 import 'package:grocery_app/dashboard/filter.dart';
+import 'package:grocery_app/dashboard/order_success.dart';
 import 'package:grocery_app/dashboard/payment_method.dart';
 import 'package:grocery_app/dashboard/previous_order_detail.dart';
 import 'package:grocery_app/dashboard/search_page.dart';
 import 'package:grocery_app/dashboard/storepage.dart';
 import 'package:grocery_app/dashboard/product_detail_page.dart';
+import 'package:grocery_app/dashboard/trackorder_1.dart';
 import 'package:grocery_app/onboarding/enable_notification.dart';
 import 'package:grocery_app/onboarding/get_started.dart';
 import 'package:grocery_app/dashboard/home_page.dart';
@@ -40,6 +42,7 @@ class MyApp extends StatelessWidget {
       // home: Onboarding1(),
       // home: Onboarding2(),
       // home: Onboarding3(),
+      // home: Onboarding4(),
       // home: GetStartedScreen(),
       // home: OtpScreen(),
       // home: SelectCategory(),
@@ -50,12 +53,14 @@ class MyApp extends StatelessWidget {
       // home: Storepage(),
       // home: ProductDetailPage(),
       // home: OrderDetail(),
-      // home: CheckoutSummary(),
+      home: CheckoutSummary(),
       // home: PaymentMethod(),
       // home: SearchPage(),
       // home: Filter(),
       // home: AddressDetail(),
-      home: AppearancePage(),
+      // home: AppearancePage(),
+      // home: OrderSuccessPage(),
+      // home: Trackorder1(),
     );
   }
 }
