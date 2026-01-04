@@ -113,7 +113,7 @@ class GetStartedScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         textColor: Colors.white,
         onPressed: () {
-          Navigator.pushReplacementNamed(context, '/otp');
+          Navigator.pushNamed(context, '/otp');
         },
       ),
     );

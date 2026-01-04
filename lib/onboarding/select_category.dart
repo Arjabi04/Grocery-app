@@ -125,7 +125,7 @@ class _SelectCategoryState extends State<SelectCategory> {
         backgroundColor: Colors.black,
         textColor: Colors.white,
         onPressed: () {
-          Navigator.pushReplacementNamed(context, '/setLocation');
+          Navigator.pushNamed(context, '/setLocation');
         },
       ),
     );

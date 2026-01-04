@@ -1,38 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/dashboard/storepage.dart';
 import 'package:grocery_app/widget/category_selector.dart';
 import 'package:grocery_app/widget/product_card_square.dart';
-import 'package:grocery_app/widget/searchbar.dart';
 import 'package:grocery_app/widget/top_navbar.dart';
+import '../core/models/grocery.dart'; // For Product model
 
 class ProductDetailPage extends StatelessWidget {
-  const ProductDetailPage({super.key});
+  final Product product; // Receive product from previous page
+
+  const ProductDetailPage({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          // vertical scroll
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header image with back button
-              StoreHeaderWidget(
-                imageUrl:
-                    'https://wagyushop.com/cdn/shop/products/MgyuFiletMignon1_800x.png?v=1649698474',
-              ),
-
+              StoreHeaderWidget(imageUrl: product.imageUrl),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ProductDetailsWidget(
-                      name: 'Fresh Wagyu Beef',
-                      price: '\$20.99',
+                      name: product.name,
+                      price: "\$${product.price}",
                       description:
-                          'Wagyu beef, originating from Japan, is celebrated for its exceptional marbling, tenderness, and rich flavor. This premium beef, from specific Japanese cattle breeds, features fine streaks of intramuscular fat, creating a melt-in-your-mouth experience...',
+                          product.description ?? "No description available",
                     ),
                     const SizedBox(height: 20),
                     const Text(
@@ -43,6 +39,7 @@ class ProductDetailPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 10),
+                    // You can generate variants dynamically if product has them
                     CategorySelector(
                       categories: ['1 Kg', '500 Gr', '250 Gr', '100 Gr'],
                     ),
@@ -93,6 +90,35 @@ class ProductDetailPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class StoreHeaderWidget extends StatelessWidget {
+  final String imageUrl;
+
+  const StoreHeaderWidget({super.key, required this.imageUrl});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        // Background image
+        Image.network(imageUrl, width: double.infinity, fit: BoxFit.cover),
+        // Back button
+        Positioned(
+          top: 16,
+          left: 20,
+          child: IconButton(
+            icon: const Icon(
+              Icons.keyboard_arrow_left,
+              size: 32,
+              color: Color.fromARGB(255, 0, 0, 0),
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ),
+      ],
     );
   }
 }

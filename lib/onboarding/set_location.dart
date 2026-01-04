@@ -58,10 +58,7 @@ class SetLocation extends StatelessWidget {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        '/enableNotification',
-                      );
+                      Navigator.pushNamed(context, '/enableNotification');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
@@ -80,10 +77,7 @@ class SetLocation extends StatelessWidget {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        '/enableNotification',
-                      );
+                      Navigator.pushNamed(context, '/enableNotification');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.grey[100],

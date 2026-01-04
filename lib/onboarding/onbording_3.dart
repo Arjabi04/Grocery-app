@@ -75,7 +75,7 @@ class Onboarding3 extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/getStarted');
+                      Navigator.pushNamed(context, '/getStarted');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.grey[200],
@@ -88,7 +88,7 @@ class Onboarding3 extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/onboarding4');
+                      Navigator.pushNamed(context, '/onboarding4');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,

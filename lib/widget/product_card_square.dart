@@ -114,6 +114,8 @@ class ProductDetailsWidget extends StatelessWidget {
             fontSize: 18,
             fontWeight: FontWeight.w600,
           ),
+          maxLines: 1, // ensures single line
+          overflow: TextOverflow.ellipsis,
         ),
         const SizedBox(height: 4),
         Text(

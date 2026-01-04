@@ -106,7 +106,7 @@ class OtpScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         textColor: Colors.white,
         onPressed: () {
-          Navigator.pushReplacementNamed(context, '/selectCategory');
+          Navigator.pushNamed(context, '/selectCategory');
         },
       ),
     );

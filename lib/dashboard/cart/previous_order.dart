@@ -11,7 +11,7 @@ class PreviousOrder extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.pushReplacementNamed(context, '/orderDetail');
+            Navigator.pushNamed(context, '/orderDetail');
           },
           child: ProgressOrder(
             imageUrl:

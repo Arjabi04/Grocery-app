@@ -12,7 +12,7 @@ class Onboarding1 extends StatelessWidget {
           children: [
             const SizedBox(height: 20),
 
-            // Simple progress bar: 4 lines, 1st black, rest grey
+            // Simple progress bar
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Row(
@@ -75,7 +75,7 @@ class Onboarding1 extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/getStarted');
+                      Navigator.pushNamed(context, '/getStarted');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.grey[200],
@@ -88,7 +88,7 @@ class Onboarding1 extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/onboarding2');
+                      Navigator.pushNamed(context, '/onboarding2');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,

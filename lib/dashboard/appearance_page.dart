@@ -71,7 +71,7 @@ class AppearancePage extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/profileDetail');
+                    Navigator.pushNamed(context, '/profileDetail');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,

@@ -145,7 +145,7 @@ class _FilterState extends State<Filter> {
             ),
             child: GestureDetector(
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/search');
+                Navigator.pushNamed(context, '/search');
               },
               child: const Text(
                 'Apply Filter',

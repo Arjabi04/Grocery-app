@@ -4,24 +4,24 @@ import 'package:grocery_app/widget/product_card_square.dart';
 import 'package:grocery_app/widget/searchbar.dart';
 import 'package:grocery_app/widget/top_navbar.dart';
 
-class Storepage extends StatelessWidget {
-  const Storepage({super.key});
+import '../core/models/grocery.dart'; // for Store and Product models
+
+class StorePage extends StatelessWidget {
+  final Store store; // Pass the selected store
+
+  const StorePage({super.key, required this.store});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          // vertical scroll
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header image with back button
-              StoreHeaderWidget(
-                imageUrl:
-                    'https://media.timeout.com/images/105460851/750/422/image.jpg',
-              ),
-              const SizedBox(height: 16),
+              StoreHeaderWidget(imageUrl: store.imageUrl),
+              const SizedBox(height: 20),
 
               // Store info + search + catalog
               Padding(
@@ -30,24 +30,24 @@ class Storepage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     StoreInfoWidget(
-                      storeName: "Nippon Mart",
-                      distance: "4 km • 15 mins",
-                      rating: 4.8,
-                      totalRatings: 435,
+                      storeName: store.storeName,
+                      distance: store.distanceTime,
+                      rating: store.rating,
+                      totalRatings: store.products.length,
                     ),
                     const SizedBox(height: 10),
                     GestureDetector(
                       onTap: () => Navigator.pushNamed(context, '/search'),
                       child: const SearchBarWidget(hintText: "Search product"),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 20),
                     Divider(
                       color: Colors.grey[300],
                       thickness: 1,
                       indent: 16,
                       endIndent: 16,
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 10),
                     const Text(
                       "Catalog",
                       style: TextStyle(
@@ -70,46 +70,34 @@ class Storepage extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    // Products 3x3
-                    Column(
-                      children: List.generate(3, (rowIndex) {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 12),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                GestureDetector(
-                                  onTap: () => Navigator.pushNamed(
-                                    context,
-                                    '/productDetail',
-                                  ),
-                                  child: ProductWidget(
-                                    name: 'Fresh Wagyu Beef',
-                                    price: '\$20.99',
-                                    imageUrl:
-                                        'https://cdn.shopify.com/s/files/1/1785/5627/t/60/assets/what_is_wagyu_beef-1684718175209_1000x.jpg?v=1684718176',
-                                  ),
-                                ),
-                                SizedBox(width: 12),
-                                ProductWidget(
-                                  name: 'Milk',
-                                  price: '\$9.50',
-                                  imageUrl:
-                                      'https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg?resize=1366,1366',
-                                ),
-                                SizedBox(width: 12),
-                                ProductWidget(
-                                  name: 'Cheese',
-                                  price: '\$12.00',
-                                  imageUrl:
-                                      'https://cheesemaking.com/cdn/shop/files/cheddar-cheese-making-recipe.jpg?crop=center&height=1200&v=1743632339&width=1200',
-                                ),
-                              ],
-                            ),
+                    GridView.builder(
+                      shrinkWrap:
+                          true, // lets GridView take only the space it needs
+                      physics:
+                          const NeverScrollableScrollPhysics(), // scrolls with parent
+                      itemCount: store.products.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3, // 3 items per row
+                            crossAxisSpacing: 12,
+                            mainAxisSpacing: 12,
+                            childAspectRatio: 0.7,
+                          ),
+                      itemBuilder: (context, index) {
+                        final product = store.products[index];
+                        return GestureDetector(
+                          onTap: () => Navigator.pushNamed(
+                            context,
+                            '/productDetail',
+                            arguments: product,
+                          ),
+                          child: ProductWidget(
+                            name: product.name,
+                            price: "\$${product.price}",
+                            imageUrl: product.imageUrl,
                           ),
                         );
-                      }),
+                      },
                     ),
                   ],
                 ),
@@ -139,7 +127,7 @@ class StoreHeaderWidget extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         // Back button
-        const Positioned(top: 16, left: 20, child: HeaderWithBack()),
+        Positioned(top: 16, left: 20, child: HeaderWithBack()),
       ],
     );
   }
@@ -149,7 +137,7 @@ class StoreHeaderWidget extends StatelessWidget {
 class StoreInfoWidget extends StatefulWidget {
   final String storeName;
   final String distance;
-  final double rating;
+  final String rating;
   final int totalRatings;
 
   const StoreInfoWidget({
@@ -172,7 +160,6 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Store info texts
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,18 +167,18 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
               Text(
                 widget.storeName,
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: 10),
               Text(
                 widget.distance,
                 style: const TextStyle(fontSize: 14, color: Colors.grey),
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: 10),
               Text(
-                "⭐ ${widget.rating} (${widget.totalRatings} Ratings)",
+                "${widget.rating} (${widget.totalRatings} Ratings)",
                 style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
@@ -200,12 +187,10 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
             ],
           ),
         ),
-
-        // Bookmark icon
         IconButton(
           icon: Icon(
             isBookmarked ? Icons.bookmark : Icons.bookmark_border,
-            color: isBookmarked ? const Color.fromARGB(255, 0, 0, 0) : null,
+            color: isBookmarked ? Colors.black : null,
           ),
           onPressed: () {
             setState(() {

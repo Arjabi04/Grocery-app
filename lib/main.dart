@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/test_api.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:grocery_app/dashboard/address_detail.dart';
@@ -27,6 +28,7 @@ import 'package:grocery_app/onboarding/onbording_3.dart';
 import 'package:grocery_app/onboarding/onbording_4.dart';
 import 'package:grocery_app/onboarding/get_started.dart';
 import 'package:grocery_app/onboarding/set_location.dart';
+import 'package:grocery_app/core/models/grocery.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,6 +44,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: Colors.white),
+
       initialRoute: '/splash',
 
       // 🔹 Define all routes here
@@ -57,10 +60,24 @@ class MyApp extends StatelessWidget {
         '/setLocation': (context) => const SetLocation(),
         '/enableNotification': (context) => const EnableNotification(),
         '/home': (context) => const Dashboard(initialIndex: 0),
-        '/myCart': (context) => const Dashboard(initialIndex: 1),
+        '/myCart': (context) => cofnst Dashboard(initialIndex: 1),
         '/profileDetail': (context) => const Dashboard(initialIndex: 3),
-        '/storePage': (context) => const Storepage(),
-        '/productDetail': (context) => const ProductDetailPage(),
+        '/storePage': (context) {
+          final args = ModalRoute.of(context)?.settings.arguments;
+          if (args == null || args is! Store) {
+            return Scaffold(
+              body: Center(child: Text('No store data provided')),
+            );
+          }
+
+          final store = args;
+          return StorePage(store: store);
+        },
+
+        '/productDetail': (context) {
+          final product = ModalRoute.of(context)!.settings.arguments as Product;
+          return ProductDetailPage(product: product);
+        },
         '/orderDetail': (context) => const OrderDetail(),
         '/checkout': (context) => const CheckoutSummary(),
         '/paymentMethod': (context) => const PaymentMethod(),
@@ -71,6 +88,7 @@ class MyApp extends StatelessWidget {
         '/orderSuccess': (context) => const OrderSuccessPage(),
         '/trackOrder': (context) => const Trackorder1(),
       },
+
       // home: SplashScreen(),
       // home: Onboarding1(),
       // home: Onboarding2(),
@@ -94,6 +112,8 @@ class MyApp extends StatelessWidget {
       // home: AppearancePage(),
       // home: OrderSuccessPage(),
       // home: Trackorder1(),
+
+      // home: GroceryScreen()
     );
   }
 }

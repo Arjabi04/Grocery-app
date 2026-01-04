@@ -110,7 +110,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/checkout');
+                    Navigator.pushNamed(context, '/checkout');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,

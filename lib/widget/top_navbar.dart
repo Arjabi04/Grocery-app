@@ -11,7 +11,11 @@ class HeaderWithBackAndHelp extends StatelessWidget {
         // Back button (circle)
         GestureDetector(
           onTap: () {
-            Navigator.pop(context);
+            if (Navigator.canPop(context)) {
+              Navigator.pop(context);
+            } else {
+              print("⚠️ Nothing to pop – already at root");
+            }
           },
           child: Container(
             width: 40,
@@ -59,7 +63,11 @@ class HeaderWithBack extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.pop(context);
+            if (Navigator.canPop(context)) {
+              Navigator.pop(context);
+            } else {
+              Navigator.pushNamed(context, '/home');
+            }
           },
           child: Container(
             decoration: BoxDecoration(

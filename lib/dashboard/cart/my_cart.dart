@@ -106,7 +106,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
           height: 50,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pushReplacementNamed(context, '/checkout');
+              Navigator.pushNamed(context, '/checkout');
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
             child: const Text(

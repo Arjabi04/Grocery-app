@@ -78,7 +78,7 @@ class Onboarding4 extends StatelessWidget {
         backgroundColor: Colors.black,
         textColor: Colors.white,
         onPressed: () {
-          Navigator.pushReplacementNamed(context, '/getStarted');
+          Navigator.pushNamed(context, '/getStarted');
         },
       ),
     );
